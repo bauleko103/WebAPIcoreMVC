@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApp.Data;
 
 namespace WebApp.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221202194353_bauletaolai")]
+    partial class bauletaolai
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -19,7 +21,7 @@ namespace WebApp.Migrations
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("WebApp.Data.Book", b =>
+            modelBuilder.Entity("WebApp.Data.BookModel", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
@@ -36,10 +38,10 @@ namespace WebApp.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Book");
+                    b.ToTable("BookModel");
                 });
 
-            modelBuilder.Entity("WebApp.Data.HangHoa", b =>
+            modelBuilder.Entity("WebApp.Data.HangHoaModel", b =>
                 {
                     b.Property<Guid>("MaHangHoa")
                         .ValueGeneratedOnAdd()
@@ -87,7 +89,7 @@ namespace WebApp.Migrations
                     b.ToTable("Loai");
                 });
 
-            modelBuilder.Entity("WebApp.Data.HangHoa", b =>
+            modelBuilder.Entity("WebApp.Data.HangHoaModel", b =>
                 {
                     b.HasOne("WebApp.Data.Loai", "Loai")
                         .WithMany("HangHoas")

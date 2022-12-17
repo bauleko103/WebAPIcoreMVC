@@ -22,34 +22,6 @@ namespace aspNETcore6.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("aspNETcore6.Data.Boss", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("DiemSo")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("StandardBId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StudentID")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("StandardBId");
-
-                    b.ToTable("Boss");
-                });
-
             modelBuilder.Entity("aspNETcore6.Data.Movie", b =>
                 {
                     b.Property<int>("ID")
@@ -74,30 +46,24 @@ namespace aspNETcore6.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Movie");
+                    b.ToTable("Movie", (string)null);
                 });
 
             modelBuilder.Entity("aspNETcore6.Data.Standard", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("StandardId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("StandardBId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StandardId")
-                        .HasColumnType("int");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StandardId"));
 
                     b.Property<string>("StandardName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("StandardId");
 
-                    b.ToTable("Standards");
+                    b.ToTable("Standards", (string)null);
                 });
 
             modelBuilder.Entity("aspNETcore6.Data.Student", b =>
@@ -125,18 +91,7 @@ namespace aspNETcore6.Migrations
 
                     b.HasIndex("StandardId");
 
-                    b.ToTable("Student");
-                });
-
-            modelBuilder.Entity("aspNETcore6.Data.Boss", b =>
-                {
-                    b.HasOne("aspNETcore6.Data.Standard", "Standard")
-                        .WithMany("Bosss")
-                        .HasForeignKey("StandardBId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Standard");
+                    b.ToTable("Student", (string)null);
                 });
 
             modelBuilder.Entity("aspNETcore6.Data.Student", b =>
@@ -152,8 +107,6 @@ namespace aspNETcore6.Migrations
 
             modelBuilder.Entity("aspNETcore6.Data.Standard", b =>
                 {
-                    b.Navigation("Bosss");
-
                     b.Navigation("Students");
                 });
 #pragma warning restore 612, 618

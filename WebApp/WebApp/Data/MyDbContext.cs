@@ -11,6 +11,7 @@ namespace WebApp.Data
         #region DBset
         public DbSet<HangHoa> HangHoa { get; set; }
         public DbSet<Loai> Loais { get; set; }
+        public DbSet<Book> Books { get; set; }
         #endregion
     }
 }
